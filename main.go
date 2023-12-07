@@ -114,6 +114,7 @@ func main() {
 		artifactRetentionTTL     time.Duration
 		artifactRetentionRecords int
 		artifactDigestAlgo       string
+		insecureAllowHTTP        helper.ConnectionOptions
 	)
 
 	flag.StringVar(&metricsAddr, "metrics-addr", envOrDefault("METRICS_ADDR", ":8080"),
@@ -160,6 +161,7 @@ func main() {
 	featureGates.BindFlags(flag.CommandLine)
 	watchOptions.BindFlags(flag.CommandLine)
 	intervalJitterOptions.BindFlags(flag.CommandLine)
+	insecureAllowHTTP.BindFlags(flag.CommandLine)
 
 	flag.Parse()
 
